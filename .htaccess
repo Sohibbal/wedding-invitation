@@ -5,6 +5,22 @@
 
     RewriteEngine On
 
+    # ====================================================================================
+    # NEW: Arahkan request ke folder /public jika file/folder tersebut tidak ada di root
+    # ====================================================================================
+
+    # Jika request bukan ke folder /public
+    RewriteCond %{REQUEST_URI} !^/public/
+
+    # Jika file atau folder tidak ada di root, teruskan ke /public
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+
+    # ====================================================================================
+    # RULE LAMA (dipertahankan)
+    # ====================================================================================
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
