@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Pengantar extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'teks1', 'teks2', 'ayat', 'isi_ayat'];
+}
